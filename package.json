@@ -1,0 +1,28 @@
+{
+  "name": "prueba-serverless-softe",
+  "version": "1.0.0",
+  "description": "serverless despliegue aws",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduvinTrigos/prueba_serverless_softe.git"
+  },
+  "author": "Eatrigos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduvinTrigos/prueba_serverless_softe/issues"
+  },
+  "homepage": "https://github.com/eduvinTrigos/prueba_serverless_softe#readme",
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "serverless-offline": "^12.0.4",
+    "serverless-prune-plugin": "^2.0.2"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.1.6",
+    "node-fetch": "^3.3.1"
+  }
+}

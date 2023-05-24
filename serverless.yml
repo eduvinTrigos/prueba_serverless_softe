@@ -1,0 +1,42 @@
+service: aws-nodeJs
+frameworkVersion: '3'
+useDotenv: true
+package:
+  individually: false
+provider:
+  name: aws
+  stage: demo # production | development | demo
+  #region: us-west-2
+  runtime: nodejs12.x
+  timeout: 30
+  environment:
+    NODE_ENV: ${opt:stage, 'development'} # production | development | demo
+    JWT_SECRET: ${self:custom.credentials.aws.jwt_secret}
+  httpApi:
+    cors: true
+plugins:
+  - serverless-offline
+  - serverless-prune-plugin
+custom:
+  credentials: ${file(./config/credentials.json)}
+  prune:
+    automatic: true
+    number: 3
+  serverless-offline:
+    httpPort: 4000
+    websocketPort: 4001
+    lambdaPort: 4002
+functions:
+  swapi:
+    handler: handler/swapi_handler.swapis
+    events:
+      - httpApi:
+          path: /{type_data}/{parameter_film}
+          method: GET
+      - httpApi:
+          path: /{type_data}
+          method: GET
+          request:
+            parameters:
+              querystrings:
+                page: true
