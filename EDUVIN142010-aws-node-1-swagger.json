@@ -1,0 +1,218 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1",
+    "title" : "prueba softe",
+    "description" : ""
+  },
+  "paths" : {
+    "/{type_data}/{parameter_film}" : {
+      "get" : {
+        "summary" : "Obtener información basada en el tipo de datos y el parámetro de la película",
+        "responses" : {
+          "200" : {
+            "description" : "Respuesta exitosa"
+          },
+          "404" : {
+            "description" : "No encontrado"
+          }
+        }
+      }
+    },
+    "/{type_data}" : {
+      "get" : {
+        "summary" : "Obtener información basada en el tipo de datos",
+        "parameters" : [ {
+          "name" : "type_data",
+          "in" : "path",
+          "required" : true,
+          "description" : "Tipo de datos",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Respuesta exitosa"
+          },
+          "404" : {
+            "description" : "No encontrado"
+          }
+        }
+      }
+    },
+    "/personajes" : {
+      "get" : {
+        "summary" : "Obtener todos los personajes",
+        "responses" : {
+          "200" : {
+            "description" : "Respuesta exitosa"
+          },
+          "404" : {
+            "description" : "No encontrado"
+          }
+        }
+      }
+    },
+    "/personajes/{id_personaje}/details" : {
+      "get" : {
+        "summary" : "Obtener detalles de un personaje basado en su ID",
+        "parameters" : [ {
+          "name" : "id_personaje",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID del personaje",
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Respuesta exitosa"
+          },
+          "404" : {
+            "description" : "No encontrado"
+          }
+        }
+      }
+    },
+    "/personajes/create" : {
+      "post" : {
+        "summary" : "Crear un nuevo personaje",
+        "requestBody" : {
+          "description" : "Datos del nuevo personaje",
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Personaje"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Personaje creado exitosamente"
+          }
+        }
+      }
+    },
+    "/personajes/update/{id_personaje}" : {
+      "put" : {
+        "summary" : "Actualizar un personaje existente",
+        "parameters" : [ {
+          "name" : "id_personaje",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID del personaje a actualizar",
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Nuevos datos del personaje",
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Personaje"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Personaje actualizado exitosamente"
+          },
+          "404" : {
+            "description" : "No encontrado"
+          }
+        }
+      }
+    },
+    "/personajes/delete/{id_personaje}" : {
+      "delete" : {
+        "summary" : "Eliminar un personaje existente",
+        "parameters" : [ {
+          "name" : "id_personaje",
+          "in" : "path",
+          "required" : true,
+          "description" : "ID del personaje a eliminar",
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Personaje eliminado exitosamente"
+          },
+          "404" : {
+            "description" : "No encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Personaje" : {
+        "type" : "object",
+        "properties" : {
+          "per_id" : {
+            "type" : "integer",
+            "description" : "ID del personaje"
+          },
+          "per_name" : {
+            "type" : "string",
+            "maxLength" : 50,
+            "description" : "Nombre del personaje"
+          },
+          "per_last_name" : {
+            "type" : "string",
+            "maxLength" : 50,
+            "description" : "Apellido del personaje"
+          },
+          "per_age" : {
+            "type" : "integer",
+            "minimum" : 0,
+            "description" : "Edad del personaje"
+          },
+          "per_gender" : {
+            "type" : "string",
+            "maxLength" : 50,
+            "description" : "Género del personaje"
+          },
+          "per_description" : {
+            "type" : "string",
+            "format" : "text",
+            "description" : "Descripción del personaje"
+          },
+          "per_skills" : {
+            "type" : "string",
+            "format" : "text",
+            "description" : "Habilidades del personaje"
+          },
+          "per_date_create" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "Fecha de creación del personaje"
+          },
+          "per_date_update" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "Fecha de actualización del personaje"
+          },
+          "per_status" : {
+            "type" : "integer",
+            "description" : "Estado del personaje"
+          }
+        },
+        "required" : [ "per_name", "per_last_name", "per_age", "per_gender", "per_description", "per_skills", "per_date_create", "per_date_update", "per_status" ]
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/EDUVIN142010/aws-node/1"
+  } ]
+}

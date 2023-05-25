@@ -2,19 +2,19 @@ const { update_url } = require('./utils');
 
 const planets = (data) => {
   	return {
-		"name": data['name'],
-		"rotation_period": data['rotation_period'],
-		"orbital_period": data['orbital_period'],
-		"diameter": data['diameter'],
-		"climate": data['climate'],
-		"gravity": data['gravity'],
-		"terrain": data['terrain'],
-		"surface_water": data['surface_water'],
-		"population": data['population'],
-		"residents": update_url(data['residents']),
-		"films": update_url(data['films']),
-		"created": data['created'],
-		"edited": data['edited'],
+		"nombre": data['name'],
+		"período_de_rotacion": data['rotation_period'],
+		"periodo_orbital": data['orbital_period'],
+		"diametro": data['diameter'],
+		"clima": data['climate'],
+		"gravedad": data['gravity'],
+		"terreno": data['terrain'],
+		"superficie_agua": data['surface_water'],
+		"poblacion": data['population'],
+		"residentes": update_url(data['residents']),
+		"peloculas": update_url(data['films']),
+		"creado": data['created'],
+		"editado": data['edited'],
 		"url": update_url(data['url']),
   	};
 };

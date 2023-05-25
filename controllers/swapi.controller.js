@@ -8,7 +8,7 @@ const models = {
   'vehicles': require('../models/vehicles.model')
 };
 
-module.exports.swapi = async (req, parameter_film, page ,type_data) => {
+module.exports.swapi = async (req, type_data,data_id, page ) => {
   try {
     const headersList = {
       "Accept": "*/*",
@@ -36,8 +36,8 @@ module.exports.swapi = async (req, parameter_film, page ,type_data) => {
 
     let apiUrl = type_request[type_data];
 
-    if (parameter_film) {
-      apiUrl += parameter_film;
+    if (data_id != null ) {
+      apiUrl += data_id;
     }
 
     if (page) {
@@ -45,16 +45,15 @@ module.exports.swapi = async (req, parameter_film, page ,type_data) => {
     }
 
     let response = await fetch(apiUrl, {
-      method: "GET",
-      headers: headersList
+        method: "GET",
+        headers: headersList
     });
 
     const statusCode = response.status;
     const responseData = await response.json();
-    console.log(responseData );
-
+   
     if (response.ok) {
-      if (parameter_film && parameter_film !== '') {
+      if (data_id && data_id !== '') {
         return {
           statusCode,
           body: JSON.stringify({

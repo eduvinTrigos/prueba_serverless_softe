@@ -6,12 +6,11 @@ package:
 provider:
   name: aws
   stage: demo # production | development | demo
-  #region: us-west-2
+  region: us-west-2
   runtime: nodejs12.x
   timeout: 30
   environment:
     NODE_ENV: ${opt:stage, 'development'} # production | development | demo
-    JWT_SECRET: ${self:custom.credentials.aws.jwt_secret}
   httpApi:
     cors: true
 plugins:
@@ -31,7 +30,7 @@ functions:
     handler: handler/swapi_handler.swapis
     events:
       - httpApi:
-          path: /{type_data}/{parameter_film}
+          path: /{type_data}/{id_data}
           method: GET
       - httpApi:
           path: /{type_data}
@@ -40,3 +39,34 @@ functions:
             parameters:
               querystrings:
                 page: true
+  personaje:
+    handler: handler/personaje_handler.list
+    events:
+      - httpApi:
+          path: /personajes
+          method: GET
+  personaje_view:
+    handler: handler/personaje_handler.view
+    events:
+      - httpApi:
+          path: /personajes/{id_personaje}/details
+          method: GET
+  personaje_create:
+    handler: handler/personaje_handler.create
+    events:
+      - httpApi:
+          path: /personajes/create
+          method: POST
+  personaje_update:
+    handler: handler/personaje_handler.update
+    events:
+      - httpApi:
+          path: /personajes/update/{id_personaje}
+          method: PUT
+  personaje_delete:
+    handler: handler/personaje_handler.delete
+    events:          
+      - httpApi:
+          path: /personajes/delete/{id_personaje}
+          method: DELETE
+      

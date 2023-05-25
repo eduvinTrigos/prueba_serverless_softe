@@ -2,21 +2,21 @@ const { update_url } = require('./utils');
 
 const people = (data) => {
     return {
-      "name": data['name'],
-      "height": data['height'],
-      "mass": data['mass'],
-      "hair_color": data['hair_color'],
-      "skin_color": data['skin_color'],
-      "eye_color": data['eye_color'],
-      "birth_year": data['birth_year'],
-      "gender": data['gender'],
-      "homeworld": update_url(data['homeworld']),
-      "films": update_url(data['films']),
-      "species": update_url(data['species']),
-      "vehicles":  update_url(data['vehicles']),
-      "starships": update_url(data['starships']),
-      "created": data['vehicles'],
-      "edited": data['url'],
+      "nombre": data['name'],
+      "altura": data['height'],
+      "masa": data['mass'],
+      "color_cabello": data['hair_color'],
+      "color_de_la_piel": data['skin_color'],
+      "color_ojos": data['eye_color'],
+      "año_nacimiento": data['birth_year'],
+      "genero": data['gender'],
+      "mundo_natal": update_url(data['homeworld']),
+      "peliculas": update_url(data['films']),
+      "especies": update_url(data['species']),
+      "vehiculos":  update_url(data['vehicles']),
+      "naves_estelares": update_url(data['starships']),
+      "creado": data['created'],
+      "editado": data['edited'],
       "url": update_url(data['url'])
     };
 };

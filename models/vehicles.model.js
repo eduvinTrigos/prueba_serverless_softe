@@ -2,21 +2,21 @@ const { update_url } = require('./utils');
 
 const vehicles = (data) => {
   	return {
-		"name": data['name'],
-		"model": data['model'],
-		"manufacturer": data['manufacturer'],
-		"cost_in_credits": data['cost_in_credits'],
-		"length": data['length'],
-		"max_atmosphering_speed": data['max_atmosphering_speed'],
-		"crew": data['crew'],
-		"passengers": data['passengers'],
-		"cargo_capacity": data['cargo_capacity'],
-		"consumables": data['consumables'],
-		"vehicle_class": data['vehicle_class'],
-		"pilots": update_url(data['pilots']),
-		"films": update_url(data['films']),
-		"created": data['created'],
-		"edited":data['edited'],
+		"nombre": data['name'],
+		"modelo": data['model'],
+		"fabricante": data['manufacturer'],
+		"coste_en_créditos": data['cost_in_credits'],
+		"longitud": data['length'],
+		"velocidad_máxima_atmosférica": data['max_atmosphering_speed'],
+		"tripulacion": data['crew'],
+		"pasajeros": data['passengers'],
+		"capacidad_de_carga": data['cargo_capacity'],
+		"consumibles": data['consumables'],
+		"clase_vehiculo": data['vehicle_class'],
+		"pilotos": update_url(data['pilots']),
+		"peliculas": update_url(data['films']),
+		"creado": data['created'],
+		"editado":data['edited'],
 		"url":update_url(data['url'])
   	};
 };
